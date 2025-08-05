@@ -61,7 +61,7 @@ export interface SessionInfo {
 
 // WebSocket関連の型定義
 export interface WebSocketMessage {
-  type: 'join' | 'leave' | 'start_game' | 'submit_prompt' | 'submit_drawing' | 'submit_answer' | 'ping' | 'pong';
+  type: 'join' | 'leave' | 'start_game' | 'submit_prompt' | 'submit_drawing' | 'submit_answer' | 'ping' | 'pong' | 'player_joined' | 'player_left' | 'player_disconnected' | 'game_started' | 'error';
   data?: any;
   playerId?: string;
   roomId?: string;

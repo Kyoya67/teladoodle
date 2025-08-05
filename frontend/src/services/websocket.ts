@@ -5,13 +5,12 @@ const WS_BASE_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:3000';
 interface WebSocketCallbacks {
   onConnect?: () => void;
   onDisconnect?: () => void;
-  onError?: (error: Event) => void;
+  onError?: (error: Event | any) => void;
   onMessage?: (message: WebSocketMessage) => void;
   onPlayerJoined?: (data: any) => void;
   onPlayerLeft?: (data: any) => void;
   onPlayerDisconnected?: (data: any) => void;
   onGameStarted?: (data: any) => void;
-  onError?: (data: any) => void;
 }
 
 class WebSocketService {
