@@ -1,7 +1,7 @@
 import type { SessionInfo } from '../types/index';
+import { isWithinReconnectTimeout } from '../../../shared/index.js';
 
 const SESSION_KEY = 'teladoodle_session';
-const RECONNECT_TIMEOUT = 30 * 1000; // 30秒
 
 // セッション情報を保存
 export const saveSession = (session: SessionInfo): void => {
@@ -38,16 +38,5 @@ export const canReconnect = (): boolean => {
   const session = getSession();
   if (!session || !session.lastConnected) return false;
   
-  const timeSinceLastConnection = Date.now() - session.lastConnected.getTime();
-  return timeSinceLastConnection < RECONNECT_TIMEOUT;
-};
-
-// プレイヤーIDを生成
-export const generatePlayerId = (): string => {
-  return `player_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-};
-
-// ルームIDを生成
-export const generateRoomId = (): string => {
-  return `room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  return isWithinReconnectTimeout(session.lastConnected);
 }; 

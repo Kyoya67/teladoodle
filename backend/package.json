@@ -1,0 +1,30 @@
+{
+  "name": "teladoodle-backend",
+  "version": "1.0.0",
+  "description": "Teladoodle backend API with Hono",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "deploy": "gcloud run deploy teladoodle-api --source . --platform managed --region asia-northeast1 --allow-unauthenticated",
+    "deploy:local": "gcloud run deploy teladoodle-api --source . --platform managed --region asia-northeast1 --allow-unauthenticated --project your-project-id"
+  },
+  "dependencies": {
+    "hono": "^4.0.0",
+    "@hono/node-server": "^1.8.0",
+    "@hono/zod-validator": "^0.2.0",
+    "zod": "^3.22.0",
+    "ws": "^8.14.0",
+    "@types/ws": "^8.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

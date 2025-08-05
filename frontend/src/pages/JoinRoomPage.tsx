@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { generatePlayerId, saveSession } from '../utils/session';
+import { saveSession } from '../utils/session';
+import { generatePlayerId } from '../../../shared/index.js';
 import type { Room, Player } from '../types/index';
 
 const JoinRoomPage: React.FC = () => {
